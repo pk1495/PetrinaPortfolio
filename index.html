@@ -23,15 +23,15 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{font-family:var(--sans);background:var(--paper);color:var(--ink-text);line-height:1.6;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink-text);line-height:1.65;font-size:18px;}
   a{color:inherit;text-decoration:none;}
   ::selection{background:var(--amber);color:var(--ink);}
   .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
 
   header{position:sticky;top:0;z-index:10;background:var(--ink);border-bottom:1px solid #333c47;}
   nav.wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;}
-  .logo{font-family:var(--mono);font-weight:600;font-size:1rem;color:var(--amber);}
-  .nav-links{list-style:none;display:flex;gap:24px;font-family:var(--mono);font-size:0.85rem;color:var(--text-dim);}
+  .logo{font-family:var(--mono);font-weight:600;font-size:1.15rem;color:var(--amber);}
+  .nav-links{list-style:none;display:flex;gap:28px;font-family:var(--mono);font-size:0.98rem;color:var(--text-dim);}
   .nav-links a:hover{color:var(--amber);}
   .nav-toggle{display:none;background:none;border:1px solid #333c47;color:var(--text);font-family:var(--mono);border-radius:4px;padding:6px 10px;font-size:0.82rem;}
   @media(max-width:680px){
@@ -42,57 +42,57 @@
   }
 
   /* hero */
-  .hero{background:var(--ink);color:var(--text);padding:64px 0 60px;}
-  .hero h1{font-family:var(--mono);font-size:2.1rem;font-weight:600;margin-bottom:10px;}
-  .hero h2{font-size:1.1rem;font-weight:500;color:var(--amber);margin-bottom:18px;}
-  .hero p{max-width:60ch;color:var(--text-dim);margin-bottom:26px;}
-  .btn-row{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:0.85rem;}
-  .btn{display:inline-block;padding:10px 20px;border-radius:4px;font-weight:600;}
+  .hero{background:var(--ink);color:var(--text);padding:80px 0 76px;}
+  .hero h1{font-family:var(--mono);font-size:3.2rem;font-weight:600;margin-bottom:14px;}
+  .hero h2{font-size:1.5rem;font-weight:500;color:var(--amber);margin-bottom:24px;}
+  .hero p{max-width:66ch;color:var(--text-dim);margin-bottom:32px;font-size:1.15rem;}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:1rem;}
+  .btn{display:inline-block;padding:12px 24px;border-radius:4px;font-weight:600;}
   .btn.primary{background:var(--amber);color:var(--ink);}
   .btn.secondary{border:1px solid var(--amber);color:var(--amber);}
   .btn:hover{opacity:0.85;}
 
-  section{padding:50px 0;border-top:1px solid var(--paper-dim);}
+  section{padding:64px 0;border-top:1px solid var(--paper-dim);}
   section:first-of-type{border-top:none;}
-  .kicker{font-family:var(--mono);font-size:0.78rem;color:var(--amber-dim);margin-bottom:6px;}
-  h3.section-title{font-family:var(--mono);font-size:1.35rem;font-weight:600;margin-bottom:22px;color:var(--ink-text);}
+  .kicker{font-family:var(--mono);font-size:0.9rem;color:var(--amber-dim);margin-bottom:8px;}
+  h3.section-title{font-family:var(--mono);font-size:1.9rem;font-weight:600;margin-bottom:28px;color:var(--ink-text);}
 
   /* about */
   .about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:60px;}
   @media(max-width:720px){.about-grid{grid-template-columns:1fr;}}
-  .about-grid p{margin-bottom:14px;color:var(--ink-text-dim);max-width:62ch;}
-  .facts{font-family:var(--mono);font-size:0.82rem;background:var(--ink);color:var(--text);border-radius:6px;padding:18px 20px;}
-  .facts dt{color:var(--text-dim);margin-top:10px;}
+  .about-grid p{margin-bottom:16px;color:var(--ink-text-dim);max-width:68ch;font-size:1.08rem;}
+  .facts{font-family:var(--mono);font-size:0.98rem;background:var(--ink);color:var(--text);border-radius:6px;padding:24px 26px;}
+  .facts dt{color:var(--text-dim);margin-top:14px;}
   .facts dt:first-child{margin-top:0;}
   .facts dd{color:var(--amber);margin-bottom:2px;}
 
   /* skills */
-  .skill-group{margin-bottom:18px;}
-  .skill-group h4{font-family:var(--mono);font-size:0.9rem;font-weight:600;margin-bottom:8px;color:var(--amber-dim);}
-  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag-row span{font-family:var(--mono);background:var(--paper-dim);border:1px solid #d8d4c6;border-radius:20px;padding:5px 14px;font-size:0.8rem;color:var(--ink-text);}
+  .skill-group{margin-bottom:24px;}
+  .skill-group h4{font-family:var(--mono);font-size:1.05rem;font-weight:600;margin-bottom:12px;color:var(--amber-dim);}
+  .tag-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag-row span{font-family:var(--mono);background:var(--paper-dim);border:1px solid #d8d4c6;border-radius:20px;padding:7px 16px;font-size:0.95rem;color:var(--ink-text);}
 
   /* experience & projects */
-  .item{padding:22px 0;border-top:1px solid var(--paper-dim);}
+  .item{padding:28px 0;border-top:1px solid var(--paper-dim);}
   .item:first-child{border-top:none;}
-  .item-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:2px;}
-  .item h4{font-family:var(--mono);font-size:1.02rem;font-weight:600;}
-  .item-date{font-family:var(--mono);font-size:0.78rem;color:var(--amber-dim);white-space:nowrap;}
-  .item-sub{font-size:0.92rem;color:var(--ink-text-dim);margin-bottom:10px;}
-  .item ul{padding-left:20px;}
-  .item li{margin-bottom:6px;font-size:0.95rem;max-width:66ch;}
-  .item-stack{margin-top:10px;font-family:var(--mono);font-size:0.78rem;color:var(--teal);}
+  .item-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px;}
+  .item h4{font-family:var(--mono);font-size:1.3rem;font-weight:600;}
+  .item-date{font-family:var(--mono);font-size:0.9rem;color:var(--amber-dim);white-space:nowrap;}
+  .item-sub{font-size:1.05rem;color:var(--ink-text-dim);margin-bottom:14px;}
+  .item ul{padding-left:22px;}
+  .item li{margin-bottom:8px;font-size:1.08rem;max-width:72ch;}
+  .item-stack{margin-top:14px;font-family:var(--mono);font-size:0.9rem;color:var(--teal);}
 
   /* education */
-  .edu-card{border-left:3px solid var(--amber);padding-left:20px;}
-  .edu-card h4{font-family:var(--mono);font-size:1.02rem;font-weight:600;margin-bottom:2px;}
-  .edu-sub{font-size:0.9rem;color:var(--ink-text-dim);margin-bottom:14px;}
-  .edu-course{font-size:0.9rem;color:var(--ink-text-dim);max-width:66ch;margin-bottom:18px;}
-  .cert-row span{font-family:var(--mono);font-size:0.75rem;background:var(--ink);color:var(--amber);border-radius:3px;padding:4px 10px;display:inline-block;margin:0 6px 6px 0;}
+  .edu-card{border-left:3px solid var(--amber);padding-left:26px;}
+  .edu-card h4{font-family:var(--mono);font-size:1.3rem;font-weight:600;margin-bottom:4px;}
+  .edu-sub{font-size:1.05rem;color:var(--ink-text-dim);margin-bottom:18px;}
+  .edu-course{font-size:1.05rem;color:var(--ink-text-dim);max-width:72ch;margin-bottom:22px;}
+  .cert-row span{font-family:var(--mono);font-size:0.9rem;background:var(--ink);color:var(--amber);border-radius:3px;padding:6px 12px;display:inline-block;margin:0 8px 8px 0;}
 
   /* contact */
-  .contact-links{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);}
-  .contact-links a{border:1px solid var(--paper-dim);padding:10px 18px;border-radius:4px;font-size:0.9rem;font-weight:600;color:var(--ink-text);}
+  .contact-links{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);}
+  .contact-links a{border:1px solid var(--paper-dim);padding:12px 22px;border-radius:4px;font-size:1.05rem;font-weight:600;color:var(--ink-text);}
   .contact-links a:hover{border-color:var(--amber);color:var(--amber-dim);}
 
   footer{background:var(--ink);color:var(--text-dim);text-align:center;padding:30px 0;font-family:var(--mono);font-size:0.82rem;}
@@ -132,7 +132,7 @@
 <section id="about">
   <div class="wrap">
     <div class="kicker">01 / about</div>
-    <h3 class="section-title">about</h3>
+    <h3 class="section-title">whoami</h3>
     <div class="about-grid">
       <div>
         <p>I'm a Cybersecurity student at RIT, minoring in Artificial Intelligence and Cyberpolitics, and part of the Honors Program. Most of what I build touches security in some way — authentication, access control, encryption, or data protection — but I'm also drawn to the software engineering side of things: building full-stack tools from the ground up.</p>
@@ -154,7 +154,7 @@
 <section id="skills">
   <div class="wrap">
     <div class="kicker">02 / skills</div>
-    <h3 class="section-title">skills</h3>
+    <h3 class="section-title">cat skills.txt</h3>
     <div class="skill-group">
       <h4>Cybersecurity</h4>
       <div class="tag-row">
@@ -184,7 +184,7 @@
 <section id="experience">
   <div class="wrap">
     <div class="kicker">03 / experience</div>
-    <h3 class="section-title">experience</h3>
+    <h3 class="section-title">work history</h3>
 
     <div class="item">
       <div class="item-head">
@@ -240,7 +240,7 @@
 <section id="projects">
   <div class="wrap">
     <div class="kicker">04 / projects</div>
-    <h3 class="section-title">projects</h3>
+    <h3 class="section-title">ls ~/projects</h3>
 
     <div class="item">
       <div class="item-head">
@@ -284,7 +284,7 @@
 <section id="education">
   <div class="wrap">
     <div class="kicker">05 / education</div>
-    <h3 class="section-title">education</h3>
+    <h3 class="section-title">transcript</h3>
     <div class="edu-card">
       <h4>B.S. Cybersecurity (Honors)</h4>
       <div class="edu-sub">Rochester Institute of Technology · Rochester, NY · Aug 2024 – May 2028</div>
@@ -301,7 +301,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="kicker">06 / contact</div>
-    <h3 class="section-title">contact</h3>
+    <h3 class="section-title">get in touch</h3>
     <div class="contact-links">
       <a href="https://github.com/pk1495" target="_blank">github</a>
       <a href="https://www.linkedin.com/in/petrinakingsley" target="_blank">linkedin</a>
