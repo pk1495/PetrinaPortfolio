@@ -1,1269 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petrina Kingsley - 2nd Year Cybersecurity Student</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
-
-        /* Header */
-        header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #00d9ff;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #00d9ff;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.5s forwards;
-            background: linear-gradient(45deg, #00d9ff, #22c55e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1s forwards;
-            color: #00d9ff;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.2s forwards;
-            color: #cbd5e1;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.5s forwards;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border: 2px solid #00d9ff;
-            color: #00d9ff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button.primary {
-            background: #00d9ff;
-            color: #0f172a;
-        }
-
-        .cta-button:hover {
-            background: #00d9ff;
-            color: #0f172a;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
-        }
-
-        .cta-button.primary:hover {
-            background: transparent;
-            color: #00d9ff;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 0;
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #1e293b;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: #475569;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            background: #1e293b;
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-        }
-
-        .contact-info h3 {
-            color: #00d9ff;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item a {
-            color: #cbd5e1;
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            color: #00d9ff;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #0f172a, #00d9ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 6rem;
-            margin: 0 auto;
-            border: 4px solid #00d9ff;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 5rem 0;
-            background: #1e293b;
-            color: white;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: rgba(0, 217, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.2);
-        }
-
-        .skill-category h3 {
-            color: #00d9ff;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e1;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Education & Certifications */
-        .education {
-            padding: 5rem 0;
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .education-card, .cert-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #00d9ff;
-        }
-
-        .education-card h3, .cert-card h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .education-meta {
-            color: #00d9ff;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .cert-badge {
-            background: linear-gradient(45deg, #00d9ff, #22c55e);
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 5rem 0;
-            background: #f8fafc;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(45deg, #1e293b, #00d9ff);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-header h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 217, 255, 0.1);
-            color: #0f172a;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Experience Section */
-        .experience {
-            padding: 5rem 0;
-        }
-
-        .timeline {
-            position: relative;
-            margin-top: 3rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #00d9ff;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 6rem;
-            display: flex;
-            align-items: flex-start;
-            min-height: 140px;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 45%;
-            position: relative;
-            margin-top: 3rem;
-        }
-
-        .timeline-date {
-            position: absolute;
-            left: 50%;
-            top: 0.5rem;
-            transform: translateX(-50%);
-            background: #00d9ff;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-            z-index: 10;
-        }
-
-        /* Chat Widget */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001;
-        }
-
-        .chat-toggle {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #00d9ff, #22c55e);
-            border-radius: 50%;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .chat-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .chat-window {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-window.active {
-            display: flex;
-        }
-
-        .chat-header {
-            background: linear-gradient(45deg, #00d9ff, #22c55e);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 1rem;
-            overflow-y: auto;
-            background: #f8fafc;
-        }
-
-        .message {
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border-radius: 10px;
-            max-width: 80%;
-        }
-
-        .message.user {
-            background: #00d9ff;
-            color: white;
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .message.bot {
-            background: white;
-            color: #333;
-            border: 1px solid #e2e8f0;
-        }
-
-        .chat-input-container {
-            padding: 1rem;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        .chat-send {
-            padding: 0.8rem 1.2rem;
-            background: #00d9ff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .typing-indicator {
-            display: none;
-            padding: 0.8rem;
-            color: #64748b;
-            font-style: italic;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-            background: #1e293b;
-            color: white;
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-method {
-            background: rgba(0, 217, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(0, 217, 255, 0.2);
-        }
-
-        .contact-method-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-method h3 {
-            color: #00d9ff;
-            margin-bottom: 1rem;
-        }
-
-        .contact-method a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-method a:hover {
-            color: #00d9ff;
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 217, 255, 0.2);
-            color: #00d9ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .social-links a:hover {
-            background: #00d9ff;
-            color: #0f172a;
-            transform: translateY(-3px);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-
-            .about-content, .education-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-                align-items: flex-start;
-                padding-left: 50px;
-            }
-
-            .timeline-content {
-                width: 100%;
-            }
-
-            .timeline-date {
-                position: static;
-                transform: none;
-                margin-bottom: 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petrina Kingsley — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181d;
+    --paper:#f4f2ec;
+    --paper-dim:#e7e4da;
+    --amber:#e3a13c;
+    --amber-dim:#a97b32;
+    --teal:#5c8a86;
+    --text:#e9e7de;
+    --text-dim:#a7ada7;
+    --ink-text:#20262c;
+    --ink-text-dim:#5b6675;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink-text);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--amber);color:var(--ink);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:10;background:var(--ink);border-bottom:1px solid #333c47;}
+  nav.wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;}
+  .logo{font-family:var(--mono);font-weight:600;font-size:1rem;color:var(--amber);}
+  .nav-links{list-style:none;display:flex;gap:24px;font-family:var(--mono);font-size:0.85rem;color:var(--text-dim);}
+  .nav-links a:hover{color:var(--amber);}
+  .nav-toggle{display:none;background:none;border:1px solid #333c47;color:var(--text);font-family:var(--mono);border-radius:4px;padding:6px 10px;font-size:0.82rem;}
+  @media(max-width:680px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--ink);border-bottom:1px solid #333c47;padding:10px 24px 18px;gap:0;}
+    .nav-links.open a{padding:10px 0;border-bottom:1px solid #333c47;}
+  }
+
+  /* hero */
+  .hero{background:var(--ink);color:var(--text);padding:64px 0 60px;}
+  .hero h1{font-family:var(--mono);font-size:2.1rem;font-weight:600;margin-bottom:10px;}
+  .hero h2{font-size:1.1rem;font-weight:500;color:var(--amber);margin-bottom:18px;}
+  .hero p{max-width:60ch;color:var(--text-dim);margin-bottom:26px;}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:0.85rem;}
+  .btn{display:inline-block;padding:10px 20px;border-radius:4px;font-weight:600;}
+  .btn.primary{background:var(--amber);color:var(--ink);}
+  .btn.secondary{border:1px solid var(--amber);color:var(--amber);}
+  .btn:hover{opacity:0.85;}
+
+  section{padding:50px 0;border-top:1px solid var(--paper-dim);}
+  section:first-of-type{border-top:none;}
+  .kicker{font-family:var(--mono);font-size:0.78rem;color:var(--amber-dim);margin-bottom:6px;}
+  h3.section-title{font-family:var(--mono);font-size:1.35rem;font-weight:600;margin-bottom:22px;color:var(--ink-text);}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;}
+  @media(max-width:720px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{margin-bottom:14px;color:var(--ink-text-dim);max-width:62ch;}
+  .facts{font-family:var(--mono);font-size:0.82rem;background:var(--ink);color:var(--text);border-radius:6px;padding:18px 20px;}
+  .facts dt{color:var(--text-dim);margin-top:10px;}
+  .facts dt:first-child{margin-top:0;}
+  .facts dd{color:var(--amber);margin-bottom:2px;}
+
+  /* skills */
+  .skill-group{margin-bottom:18px;}
+  .skill-group h4{font-family:var(--mono);font-size:0.9rem;font-weight:600;margin-bottom:8px;color:var(--amber-dim);}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-row span{font-family:var(--mono);background:var(--paper-dim);border:1px solid #d8d4c6;border-radius:20px;padding:5px 14px;font-size:0.8rem;color:var(--ink-text);}
+
+  /* experience & projects */
+  .item{padding:22px 0;border-top:1px solid var(--paper-dim);}
+  .item:first-child{border-top:none;}
+  .item-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:2px;}
+  .item h4{font-family:var(--mono);font-size:1.02rem;font-weight:600;}
+  .item-date{font-family:var(--mono);font-size:0.78rem;color:var(--amber-dim);white-space:nowrap;}
+  .item-sub{font-size:0.92rem;color:var(--ink-text-dim);margin-bottom:10px;}
+  .item ul{padding-left:20px;}
+  .item li{margin-bottom:6px;font-size:0.95rem;max-width:66ch;}
+  .item-stack{margin-top:10px;font-family:var(--mono);font-size:0.78rem;color:var(--teal);}
+
+  /* education */
+  .edu-card{border-left:3px solid var(--amber);padding-left:20px;}
+  .edu-card h4{font-family:var(--mono);font-size:1.02rem;font-weight:600;margin-bottom:2px;}
+  .edu-sub{font-size:0.9rem;color:var(--ink-text-dim);margin-bottom:14px;}
+  .edu-course{font-size:0.9rem;color:var(--ink-text-dim);max-width:66ch;margin-bottom:18px;}
+  .cert-row span{font-family:var(--mono);font-size:0.75rem;background:var(--ink);color:var(--amber);border-radius:3px;padding:4px 10px;display:inline-block;margin:0 6px 6px 0;}
+
+  /* contact */
+  .contact-links{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);}
+  .contact-links a{border:1px solid var(--paper-dim);padding:10px 18px;border-radius:4px;font-size:0.9rem;font-weight:600;color:var(--ink-text);}
+  .contact-links a:hover{border-color:var(--amber);color:var(--amber-dim);}
+
+  footer{background:var(--ink);color:var(--text-dim);text-align:center;padding:30px 0;font-family:var(--mono);font-size:0.82rem;}
+  footer a{color:var(--amber);}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Petrina Kingsley</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Petrina Kingsley</h1>
-            <p class="hero-subtitle">2nd Year Cybersecurity Student</p>
-            <p>Motivated sophomore at Rochester Institute of Technology with multiple cybersecurity certifications and a passion for protecting digital infrastructure</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/pk1495" target="_blank" class="cta-button primary">View My Projects</a>
-                <a href="#contact" class="cta-button">Contact Me</a>
-            </div>
-        </div>
-    </section>
+<header>
+  <nav class="wrap">
+    <div class="logo">petrina<span style="color:var(--text-dim)">@</span>rit<span style="color:var(--text-dim)">:~$</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle">menu</button>
+  </nav>
+</header>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a motivated 2nd year Cybersecurity student at the Rochester Institute of Technology with a strong interest in technology and a passion for problem-solving. Currently seeking internship or project-based opportunities where I can apply my academic knowledge, learn new skills, and contribute to real-world projects in software development, web development, or cybersecurity.</p>
-                    <br>
-                    <p>With multiple industry certifications including CompTIA Security+, A+, and Microsoft Cybersecurity Analyst, I bring both theoretical knowledge and practical experience in network security, system troubleshooting, and threat mitigation.</p>
-                    
-                    <div class="contact-info">
-                        <h3>🔗 Professional Links</h3>
-                        <div class="contact-item">💼 <a href="https://www.linkedin.com/in/petrina-k-9270ab312" target="_blank">LinkedIn Profile</a></div>
-                        <div class="contact-item">💻 <a href="https://github.com/pk1495" target="_blank">GitHub Portfolio</a></div>
-                        <div class="contact-item">📍 Based in Washington State</div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="profile-img">🔒</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div class="wrap">
+    <h1>Petrina Kingsley</h1>
+    <h2>Cybersecurity Student, RIT</h2>
+    <p>Third-year Cybersecurity student (Honors) at the Rochester Institute of Technology, minoring in Artificial Intelligence and Cyberpolitics, with a growing interest in software engineering. Currently seeking a Spring/Summer 2027 internship.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="#projects">view projects</a>
+      <a class="btn secondary" href="https://github.com/pk1495" target="_blank">github</a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/petrinakingsley" target="_blank">linkedin</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>🔐 Cybersecurity & IT Support</h3>
-                    <ul class="skill-list">
-                        <li>Network Security & Threat Mitigation</li>
-                        <li>System Troubleshooting & Maintenance</li>
-                        <li>Hardware & Software Support</li>
-                        <li>Vulnerability Assessment</li>
-                        <li>Penetration Testing</li>
-                        <li>Security Policy Implementation</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>💻 Programming Languages</h3>
-                    <ul class="skill-list">
-                        <li>Python (Proficient)</li>
-                        <li>JavaScript (Proficient)</li>
-                        <li>HTML & CSS (Proficient)</li>
-                        <li>Java (Beginner)</li>
-                        <li>SQL Databases</li>
-                        <li>Version Control (Git)</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>🤝 Collaboration & Communication</h3>
-                    <ul class="skill-list">
-                        <li>Team Leadership & Management</li>
-                        <li>Technical Tutoring & Mentoring</li>
-                        <li>Customer Service Excellence</li>
-                        <li>Technical Documentation</li>
-                        <li>Cross-functional Collaboration</li>
-                        <li>Public Speaking & Presentations</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">01 / about</div>
+    <h3 class="section-title">about</h3>
+    <div class="about-grid">
+      <div>
+        <p>I'm a Cybersecurity student at RIT, minoring in Artificial Intelligence and Cyberpolitics, and part of the Honors Program. Most of what I build touches security in some way — authentication, access control, encryption, or data protection — but I'm also drawn to the software engineering side of things: building full-stack tools from the ground up.</p>
+        <p>Outside of coursework and internships, I tutor K-10 students in math and science, and take lecture notes for deaf and hard-of-hearing students through the National Technical Institute for the Deaf. I'm also involved with RITSEC Club and serve as Treasurer for Women of Excellence Supporting STEM.</p>
+      </div>
+      <dl class="facts">
+        <dt>school</dt><dd>Rochester Institute of Technology</dd>
+        <dt>major</dt><dd>Cybersecurity (Honors)</dd>
+        <dt>minors</dt><dd>AI &amp; Cyberpolitics</dd>
+        <dt>graduating</dt><dd>May 2028</dd>
+        <dt>looking for</dt><dd>Spring/Summer 2027 internship</dd>
+        <dt>github</dt><dd>github.com/pk1495</dd>
+        <dt>linkedin</dt><dd>linkedin.com/in/petrinakingsley</dd>
+      </dl>
+    </div>
+  </div>
+</section>
 
-    <!-- Education & Certifications -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education & Certifications</h2>
-            <div class="education-grid">
-                <div>
-                    <div class="education-card">
-                        <h3>Rochester Institute of Technology</h3>
-                        <div class="education-meta">Bachelor of Science in Cybersecurity</div>
-                        <p><strong>Expected Graduation:</strong> May 2028</p>
-                        <p><strong>Program:</strong> Honors Program</p>
-                        <p><strong>Location:</strong> Rochester, NY</p>
-                        <br>
-                        <p><strong>Relevant Coursework:</strong></p>
-                        <ul style="margin-top: 0.5rem; color: #64748b;">
-                            <li>• Introduction to Cybersecurity</li>
-                            <li>• Cybersecurity Policy & Law</li>
-                            <li>• Software Development & Problem Solving I & II</li>
-                            <li>• Discrete Math for Computing</li>
-                            <li>• Intro to Routing & Switching</li>
-                        </ul>
-                    </div>
-                    <div class="education-card" style="margin-top: 2rem;">
-                        <h3>Mount Si High School</h3>
-                        <div class="education-meta">High School Diploma</div>
-                        <p><strong>Graduated:</strong> June 2024</p>
-                        <p><strong>GPA:</strong> 4.0</p>
-                        <p><strong>Location:</strong> North Bend, WA</p>
-                    </div>
-                </div>
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: #1e293b;">Industry Certifications</h3>
-                    <div class="cert-grid">
-                        <div class="cert-badge">CompTIA Security+</div>
-                        <div class="cert-badge">CompTIA A+</div>
-                        <div class="cert-badge">Microsoft Cybersecurity Analyst</div>
-                        <div class="cert-badge">CompTIA Network+</div>
-                        <div class="cert-badge">CompTIA IT Fundamentals (ITF+)</div>
-                    </div>
-                    
-                    <h3 style="margin: 2rem 0 1rem 0; color: #1e293b;">Leadership & Activities</h3>
-                    <div class="education-card">
-                        <ul style="color: #64748b; line-height: 1.8;">
-                            <li>• <strong>RITSEC Club</strong> - Women in Cybersecurity Committee</li>
-                            <li>• <strong>Women of Excellence Supporting STEM</strong> - Treasurer</li>
-                            <li>• <strong>Women in Computing</strong> - Projects Committee Member</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker">02 / skills</div>
+    <h3 class="section-title">skills</h3>
+    <div class="skill-group">
+      <h4>Cybersecurity</h4>
+      <div class="tag-row">
+        <span>Cryptography</span><span>RBAC</span><span>Authentication &amp; Authorization</span>
+        <span>Security Risk Assessment</span><span>CMMC Compliance</span><span>Network Security</span>
+        <span>Wireshark</span><span>Burp Suite</span><span>OAuth</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Programming</h4>
+      <div class="tag-row">
+        <span>Python</span><span>Java</span><span>JavaScript / TypeScript</span><span>SQL</span>
+        <span>HTML/CSS</span><span>Bash</span><span>C/C++</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Frameworks &amp; Tools</h4>
+      <div class="tag-row">
+        <span>React</span><span>Flask</span><span>MUI</span><span>REST APIs</span><span>OpenAPI</span>
+        <span>Firebase</span><span>Auth0</span><span>Retool</span><span>Git/GitHub</span><span>GitLab</span>
+        <span>Linux CLI</span><span>Windows Server</span><span>Microsoft Azure</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Cybersecurity Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>🔍 Network Vulnerability Assessment</h3>
-                        <p>Security Analysis & Remediation</p>
-                    </div>
-                    <div class="project-content">
-                        <p>Conducted comprehensive vulnerability scans on a simulated network environment using Nmap and other security tools. Documented security findings and developed detailed remediation strategies to address identified vulnerabilities.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Nmap</span>
-                            <span class="tech-tag">Network Security</span>
-                            <span class="tech-tag">Vulnerability Assessment</span>
-                            <span class="tech-tag">Documentation</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>🔐 Security File Transfer Tool</h3>
-                        <p>Secure Software Development</p>
-                    </div>
-                    <div class="project-content">
-                        <p>Built a Python tool to encrypt/decrypt files using AES-based encryption, SHA256 integrity verification, and basic authentication. </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Encryption</span>
-                            <span class="tech-tag">Authentication</span>
-                            <span class="tech-tag">Security</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>🌐 Web Application Penetration Testing</h3>
-                        <p>Security Testing & Reporting</p>
-                    </div>
-                    <div class="project-content">
-                        <p>Performed penetration testing on a test web application using Burp Suite to identify and document security vulnerabilities. Created detailed security reports with recommendations for remediation as part of coursework.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Burp Suite</span>
-                            <span class="tech-tag">Penetration Testing</span>
-                            <span class="tech-tag">Web Security</span>
-                            <span class="tech-tag">Reporting</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker">03 / experience</div>
+    <h3 class="section-title">experience</h3>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Data Analyst Intern</h3>
-                        <h4>Fizz Social Corp.  Remote 
-                        </h4>
-                        <p>Performed data entry, cleaning, and sorting of large datasets using Google Sheets, ensuring accuracy and consistency for internal reporting and analysis.</p>
-                    </div>
-                    <div class="timeline-date">Aug 2025 – Present</div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Student Notetaker for Deaf Students</h3>
-                        <h4>National Technical Institute for the Deaf (NTID), RIT</h4>
-                        <p>Produce accurate, detailed lecture notes to ensure accessibility for deaf and hard-of-hearing students. Support inclusive education through comprehensive documentation of classroom content.</p>
-                    </div>
-                    <div class="timeline-date">Aug 2024 – Present</div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Tutor</h3>
-                        <h4>King County Library System, Seattle, WA</h4>
-                        <p>Tutor students in mathematics, science, and history for grades K-10. Develop personalized learning strategies to help students achieve academic success and build confidence in their studies.</p>
-                    </div>
-                    <div class="timeline-date">Jan 2023 – Present</div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>IT Support Intern</h3>
-                        <h4>Mount Si High School, North Bend, WA</h4>
-                        <p>Troubleshooting hardware and software issues across various devices and managed system updates. Provided technical support to students and staff, ensuring smooth daily operations of school technology infrastructure.</p>
-                    </div>
-                    <div class="timeline-date">Jun 2023 – Aug 2023</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title" style="color: white;">Get In Touch</h2>
-                <p>Ready to discuss opportunities? Let's connect through one of the platforms below!</p>
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-method-icon">💼</div>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me professionally</p>
-                        <a href="https://www.linkedin.com/in/petrina-k-9270ab312" target="_blank">View Profile</a>
-                    </div>
-                    <div class="contact-method">
-                        <div class="contact-method-icon">💻</div>
-                        <h3>GitHub</h3>
-                        <p>Check out my projects</p>
-                        <a href="https://github.com/pk1495" target="_blank">View Portfolio</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chat Widget -->
-    <div class="chat-widget">
-        <button class="chat-toggle" onclick="toggleChat()">💬</button>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                Ask me about Petrina! 🤖
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    Hi! I'm Petrina's AI assistant. Ask me anything about her education, skills, projects, or experience!
-                </div>
-            </div>
-            <div class="typing-indicator" id="typingIndicator">
-                AI is thinking...
-            </div>
-            <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Petrina's background..." onkeypress="handleKeyPress(event)">
-                <button class="chat-send" onclick="sendMessage()">Send</button>
-            </div>
-        </div>
+    <div class="item">
+      <div class="item-head">
+        <h4>Security Software Engineer Intern</h4>
+        <span class="item-date">Jun 2026 – Present</span>
+      </div>
+      <div class="item-sub">Optimax Systems, Inc. · Ontario, NY</div>
+      <ul>
+        <li>Built a quarterly maintenance system using the GitLab API that scans all company GitHub projects and automatically generates maintenance tickets each quarter.</li>
+        <li>Built a company-wide, role-based employee review portal from scratch — designed the OpenAPI spec, created the SQL database tables, and implemented authentication, authorization, and RBAC.</li>
+        <li>Conducted software security risk assessments and supported CMMC audits through SSP and security control documentation.</li>
+      </ul>
+      <div class="item-stack">React · MUI · Auth0 · OpenAPI · SQL · GitLab API</div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/petrina-k-9270ab312" target="_blank" title="LinkedIn">in</a>
-                <a href="https://github.com/pk1495" target="_blank" title="GitHub">⚡</a>
-            </div>
-            <p>&copy; 2025 Petrina Kingsley. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="item">
+      <div class="item-head">
+        <h4>Data Analyst Intern</h4>
+        <span class="item-date">Oct 2025 – May 2026</span>
+      </div>
+      <div class="item-sub">Fizz Social Corp. · Remote</div>
+      <ul>
+        <li>Cleaned and organized campus datasets (school calendars, dining halls, holidays, Greek life) that fed into the company's AI content system for auto-generating social posts.</li>
+        <li>Managed and interacted with datasets in Retool, ensuring accuracy and consistency for downstream use.</li>
+      </ul>
+      <div class="item-stack">Python · Retool</div>
+    </div>
 
-    <script>
-        // Knowledge base about Petrina
-        const petrinaData = {
-            personal: {
-                name: "Petrina Kingsley",
-                location: "Washington State (originally), Rochester, NY (currently)",
-                school: "Rochester Institute of Technology",
-                major: "Cybersecurity",
-                year: "2nd Year Sophomore",
-                graduation: "May 2028",
-                program: "Honors Program"
-            },
-            skills: {
-                cybersecurity: [
-                    "Network Security & Threat Mitigation",
-                    "System Troubleshooting & Maintenance", 
-                    "Hardware & Software Support",
-                    "Vulnerability Assessment",
-                    "Penetration Testing",
-                    "Security Policy Implementation"
-                ],
-                programming: [
-                    "Python (Proficient)",
-                    "JavaScript (Proficient)", 
-                    "HTML & CSS (Proficient)",
-                    "Java (Beginner)",
-                    "SQL Databases",
-                    "Version Control (Git)"
-                ],
-                soft: [
-                    "Team Leadership & Management",
-                    "Technical Tutoring & Mentoring",
-                    "Customer Service Excellence", 
-                    "Technical Documentation",
-                    "Cross-functional Collaboration",
-                    "Public Speaking & Presentations"
-                ]
-            },
-            certifications: [
-                "CompTIA Security+",
-                "CompTIA A+", 
-                "Microsoft Cybersecurity Analyst",
-                "CompTIA Network+",
-                "CompTIA IT Fundamentals (ITF+)"
-            ],
-            experience: [
-                {
-                    title: "Data Analyst Intern",
-                    company: "Fizz Social Corp.",
-                    dates: "Oct 2025 – Present",
-                    description: "Performed data entry, cleaning, and sorting using Google Sheets and Python to maintain accurate datasets"
-                },
-                {
-                    title: "Student Notetaker for Deaf Students", 
-                    company: "NTID, RIT",
-                    dates: "Aug 2024 – Present",
-                    description: "Accessibility support through detailed lecture documentation"
-                },
-                {
-                    title: "Tutor",
-                    company: "King County Library System",
-                    dates: "Jan 2023 – Present", 
-                    description: "Math, science, and history tutoring for K-10 students"
-                },
-                {
-                    title: "IT Support Intern",
-                    company: "Mount Si High School",
-                    dates: "Jun 2023 – Aug 2023",
-                    description: "Hardware/software troubleshooting and system maintenance"
-                }
-            ],
-            projects: [
-                {
-                    name: "Network Vulnerability Assessment",
-                    description: "Comprehensive vulnerability scans using Nmap with remediation strategies",
-                    tech: ["Nmap", "Network Security", "Vulnerability Assessment", "Documentation"]
-                },
-                {
-                    name: "Password Manager Application", 
-                    description: "Secure Python application with encryption and authentication",
-                    tech: ["Python", "Encryption", "Authentication", "Security"]
-                },
-                {
-                    name: "Web Application Penetration Testing",
-                    description: "Security testing using Burp Suite with detailed reporting",
-                    tech: ["Burp Suite", "Penetration Testing", "Web Security", "Reporting"]
-                }
-            ],
-            activities: [
-                "RITSEC Club - Women in Cybersecurity Committee",
-                "Women of Excellence Supporting STEM - Treasurer", 
-                "Women in Computing - Projects Committee Member"
-            ],
-            coursework: [
-                "Introduction to Cybersecurity",
-                "Cybersecurity Policy & Law",
-                "Software Development & Problem Solving I & II", 
-                "Discrete Math for Computing",
-                "Intro to Routing & Switching"
-            ],
-            contact: {
-                linkedin: "https://www.linkedin.com/in/petrina-k-9270ab312",
-                github: "https://github.com/pk1495"
-            }
-        };
+    <div class="item">
+      <div class="item-head">
+        <h4>Notetaker</h4>
+        <span class="item-date">Aug 2024 – Present</span>
+      </div>
+      <div class="item-sub">National Technical Institute for the Deaf (RIT)</div>
+      <ul>
+        <li>Produce accurate, detailed lecture notes to support accessibility for deaf and hard-of-hearing students.</li>
+      </ul>
+    </div>
 
-        // Chat functionality
-        let chatOpen = false;
+    <div class="item">
+      <div class="item-head">
+        <h4>Tutor</h4>
+        <span class="item-date">Jan 2023 – Present</span>
+      </div>
+      <div class="item-sub">King County Library System · Seattle, WA</div>
+      <ul>
+        <li>Tutor students in math, science, and history for grades K-10, adapting teaching styles to individual needs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        function toggleChat() {
-            const chatWindow = document.getElementById('chatWindow');
-            chatOpen = !chatOpen;
-            
-            if (chatOpen) {
-                chatWindow.classList.add('active');
-            } else {
-                chatWindow.classList.remove('active');
-            }
-        }
+<section id="projects">
+  <div class="wrap">
+    <div class="kicker">04 / projects</div>
+    <h3 class="section-title">projects</h3>
 
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
+    <div class="item">
+      <div class="item-head">
+        <h4>Cross-Platform Now-Playing Sync App</h4>
+        <span class="item-date">Ongoing</span>
+      </div>
+      <ul>
+        <li>Built a PWA that syncs real-time listening status (current track, album art) between accounts on two different music platforms.</li>
+        <li>Integrated the Spotify Web API and YouTube Music API, each with separate OAuth flows and scoped permissions.</li>
+        <li>Used Firebase to sync data between accounts while restricting access to authorized users only.</li>
+      </ul>
+      <div class="item-stack">PWA · Firebase · OAuth · Spotify API · YouTube Music API</div>
+    </div>
 
-        function addMessage(content, isUser = false) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
-            messageDiv.textContent = content;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
+    <div class="item">
+      <div class="item-head">
+        <h4>Secure File Transfer Tool</h4>
+        <span class="item-date">Jan 2025 – Present</span>
+      </div>
+      <ul>
+        <li>Python CLI tool that encrypts and decrypts files using AES encryption with SHA256 integrity verification.</li>
+        <li>Implemented authentication to restrict access and ensure secure file transfers between users.</li>
+      </ul>
+      <div class="item-stack">Python · AES · SHA256 · CLI Design</div>
+    </div>
 
-        function showTyping() {
-            document.getElementById('typingIndicator').style.display = 'block';
-            const messagesContainer = document.getElementById('chatMessages');
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
+    <div class="item">
+      <div class="item-head">
+        <h4>Phishing Awareness Simulation</h4>
+        <span class="item-date">Mar 2025 – Present</span>
+      </div>
+      <ul>
+        <li>Built a Flask web app simulating phishing attacks via a fake login page, for safe use in classroom/workshop demonstrations.</li>
+        <li>Implemented logging to record responses and display educational feedback.</li>
+      </ul>
+      <div class="item-stack">Flask · Python · HTML/CSS</div>
+    </div>
+  </div>
+</section>
 
-        function hideTyping() {
-            document.getElementById('typingIndicator').style.display = 'none';
-        }
+<section id="education">
+  <div class="wrap">
+    <div class="kicker">05 / education</div>
+    <h3 class="section-title">education</h3>
+    <div class="edu-card">
+      <h4>B.S. Cybersecurity (Honors)</h4>
+      <div class="edu-sub">Rochester Institute of Technology · Rochester, NY · Aug 2024 – May 2028</div>
+      <div class="edu-course"><strong>Minors:</strong> Artificial Intelligence, Cyberpolitics<br>
+      <strong>Relevant coursework:</strong> Object-Oriented Programming, Web and Mobile Development, Programming for InfoSec, Reverse Engineering Fundamentals, System Administration, Network Services, Intro to Routing &amp; Switching, Discrete Math for Computing.</div>
+      <div class="cert-row">
+        <span>CompTIA Security+</span><span>CompTIA A+</span><span>CompTIA Network+</span>
+        <span>CompTIA IT Fundamentals (ITF+)</span><span>Microsoft Cybersecurity Analyst</span><span>CompTIA AI Essentials</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function generateResponse(question) {
-            const q = question.toLowerCase();
-            
-            // Personal info questions
-            if (q.includes('where') && (q.includes('from') || q.includes('live'))) {
-                return `Petrina is originally from Washington State and currently lives in Rochester, NY while attending RIT.`;
-            }
-            
-            if (q.includes('major') || q.includes('study') || q.includes('studying')) {
-                return `Petrina is majoring in Cybersecurity at Rochester Institute of Technology. She's currently a 2nd year sophomore in the Honors Program, expected to graduate in May 2028.`;
-            }
-            
-            if (q.includes('school') || q.includes('university') || q.includes('college')) {
-                return `Petrina attends Rochester Institute of Technology (RIT) in Rochester, NY. She's in the Cybersecurity program and part of the Honors Program.`;
-            }
-            
-            // Skills questions
-            if (q.includes('skill') || q.includes('programming') || q.includes('language')) {
-                return `Petrina's technical skills include:\n• Programming: Python, JavaScript, HTML/CSS, Java, SQL\n• Cybersecurity: Network security, vulnerability assessment, penetration testing\n• Soft skills: Team leadership, technical tutoring, customer service`;
-            }
-            
-            if (q.includes('python') || q.includes('javascript') || q.includes('code')) {
-                return `Petrina is proficient in Python and JavaScript, with experience in HTML/CSS and SQL databases. She also has beginner-level Java skills and uses Git for version control.`;
-            }
-            
-            // Certifications
-            if (q.includes('certification') || q.includes('cert')) {
-                return `Petrina holds several industry certifications:\n• CompTIA Security+\n• CompTIA A+\n• Microsoft Cybersecurity Analyst\n• CompTIA Network+\n• CompTIA IT Fundamentals (ITF+)`;
-            }
-            
-            // Experience questions
-            if (q.includes('experience') || q.includes('work') || q.includes('job')) {
-                return `Petrina's work experience includes:\n• Campus Store Employee at RIT (Current)\n• Student Notetaker for Deaf Students at NTID (Current)\n• Tutor at King County Library System (2023-Present)\n• IT Support Intern at Mount Si High School (Summer 2023)`;
-            }
-            
-            // Projects
-            if (q.includes('project')) {
-                return `Petrina has worked on several cybersecurity projects:\n• Network Vulnerability Assessment using Nmap\n• Password Manager Application in Python\n• Web Application Penetration Testing with Burp Suite\nAll focused on security analysis and implementation.`;
-            }
-            
-            // Activities
-            if (q.includes('activities') || q.includes('club') || q.includes('leadership')) {
-                return `Petrina is involved in several campus organizations:\n• RITSEC Club - Women in Cybersecurity Committee\n• Women of Excellence Supporting STEM - Treasurer\n• Women in Computing - Projects Committee Member`;
-            }
-            
-            // Contact info
-            if (q.includes('contact') || q.includes('linkedin') || q.includes('github')) {
-                return `You can connect with Petrina through:\n• LinkedIn: linkedin.com/in/petrina-k-9270ab312\n• GitHub: github.com/pk1495\nShe's always open to discussing opportunities!`;
-            }
-            
-            // Coursework
-            if (q.includes('course') || q.includes('class')) {
-                return `Petrina's relevant coursework includes:\n• Introduction to Cybersecurity\n• Cybersecurity Policy & Law\n• Software Development & Problem Solving I & II\n• Discrete Math for Computing\n• Intro to Routing & Switching`;
-            }
-            
-            // Internship/opportunities
-            if (q.includes('internship') || q.includes('opportunity') || q.includes('hire')) {
-                return `Petrina is actively seeking internship or project-based opportunities in software development, web development, or cybersecurity. She's motivated to apply her academic knowledge and learn new skills in real-world projects!`;
-            }
-            
-            // Default responses
-            const greetings = ['hi', 'hello', 'hey'];
-            if (greetings.some(greeting => q.includes(greeting))) {
-                return `Hello! I'm here to help you learn about Petrina Kingsley. You can ask me about her education, skills, certifications, projects, or work experience. What would you like to know?`;
-            }
-            
-            return `I'd be happy to help you learn about Petrina! You can ask me about her:\n• Education & certifications\n• Technical skills & programming\n• Work experience\n• Cybersecurity projects\n• Campus activities\n• Contact information\n\nWhat specific aspect interests you?`;
-        }
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker">06 / contact</div>
+    <h3 class="section-title">contact</h3>
+    <div class="contact-links">
+      <a href="https://github.com/pk1495" target="_blank">github</a>
+      <a href="https://www.linkedin.com/in/petrinakingsley" target="_blank">linkedin</a>
+    </div>
+  </div>
+</section>
 
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            
-            if (message === '') return;
-            
-            // Add user message
-            addMessage(message, true);
-            input.value = '';
-            
-            // Show typing indicator
-            showTyping();
-            
-            // Simulate AI thinking time
-            setTimeout(() => {
-                hideTyping();
-                const response = generateResponse(message);
-                addMessage(response);
-            }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
-        }
+<footer>
+  <div class="wrap">&copy; 2026 Petrina Kingsley</div>
+</footer>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+<script>
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click', ()=>document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+
 </body>
 </html>
